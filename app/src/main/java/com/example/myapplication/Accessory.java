@@ -5,7 +5,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity
-public class accessory {
+public class Accessory {
   @PrimaryKey(autoGenerate = true)
     public int uid;
 
@@ -14,7 +14,7 @@ public class accessory {
   @ColumnInfo(name = "type")
     public String type;
 
-  public accessory(String price, String type){
+  public Accessory(String price, String type){
       this.price = price;
       this.type = type;
   }

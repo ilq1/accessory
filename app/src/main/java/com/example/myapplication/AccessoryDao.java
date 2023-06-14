@@ -7,9 +7,9 @@ import androidx.room.Query;
 import java.util.List;
 
 @Dao
-public interface accessoryDao {
+public interface AccessoryDao {
     @Insert
-    void insertAll (accessory...accessories);
-    @Query("SELECT * FROM accessory")
-    List<accessory>getAllAccessory();
+    void insertAll (Accessory...accessories);
+    @Query("SELECT * FROM Accessory")
+    List<Accessory>getAllAccessory();
 }
