@@ -13,10 +13,13 @@ public class Accessory {
     public String price;
   @ColumnInfo(name = "type")
     public String type;
+  @ColumnInfo(name = "title")
+    public String title;
 
-  public Accessory(String price, String type){
+  public Accessory(String price, String type, String title){
       this.price = price;
       this.type = type;
+      this.title = title;
   }
 
 

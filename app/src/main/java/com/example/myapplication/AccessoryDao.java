@@ -12,4 +12,6 @@ public interface AccessoryDao {
     void insertAll (Accessory...accessories);
     @Query("SELECT * FROM Accessory")
     List<Accessory>getAllAccessory();
+
+
 }
