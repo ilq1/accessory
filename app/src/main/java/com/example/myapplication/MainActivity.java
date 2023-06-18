@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         db.accessoryDao().insertAll(ryzen_3_1200,ryzen_5_5600,ryzen_9_5900X);
         accessoryList = db.accessoryDao().getAllAccessory();
         ArrayList<String> displayAccessories = new ArrayList<>();
+        displayAccessories.add("Процессор");
         for (Accessory item : accessoryList) {
             displayAccessories.add(item.title);
         }
@@ -53,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, new ArrayList<>());
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(spinnerAdapter);
-        spinner.setPrompt("Процессор");
         spinnerAdapter.addAll(displayAccessories);
         spinnerAdapter.notifyDataSetChanged();
         spinner.setOnItemSelectedListener(onItemSelectedListener());
@@ -69,7 +69,8 @@ public class MainActivity extends AppCompatActivity {
             }
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (accessoryList.get(position).price.equals("low")) {
+                if (position == 0) return;
+                if (accessoryList.get(position - 1).price.equals("low")) {
                     Intent intent1 = new Intent(MainActivity.this, MainActivity2.class);
                     Bundle a = new Bundle();
                     a.putString("price", "low");
@@ -79,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                 }
-                if (accessoryList.get(position).price.equals("medium")) {
+                if (accessoryList.get(position-1).price.equals("medium")) {
                     Intent intent2 = new Intent(MainActivity.this, MainActivity2.class);
                     Bundle b = new Bundle();
                     b.putString("price", "medium");
@@ -89,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
                 }
 
-                if (accessoryList.get(position).price.equals("high")){
+                if (accessoryList.get(position-1 ).price.equals("high")){
                     Intent intent3 = new Intent(MainActivity.this, MainActivity2.class);
                     startActivity(intent3);
                     Bundle c = new Bundle();
@@ -98,8 +99,6 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent3);
                     finish();
                 }
-
-
             }
 
             @Override
