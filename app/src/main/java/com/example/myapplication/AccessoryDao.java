@@ -12,6 +12,8 @@ public interface AccessoryDao {
     void insertAll (Accessory...accessories);
     @Query("SELECT * FROM Accessory")
     List<Accessory>getAllAccessory();
+    @Query("SELECT * FROM Accessory WHERE type=:type AND price=:price")
+    List<Accessory> getAccessoryByTypeAndPrice(String type, String price);
 
 
 }

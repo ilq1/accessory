@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+
 import android.content.Intent;
 import android.os.Build;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
@@ -20,14 +22,16 @@ public class MainActivity extends AppCompatActivity {
 
 
     private android.widget.Spinner Spinner;
-    private List<Accessory> accessoryList;
+    public ArrayList<String> displayAccessories;
+    public List<Accessory> accessoryList;
     private String accessory;
     Spinner spinner;
 
 
 
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected  void  onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         accessoryDatabase db = Room.databaseBuilder(getApplicationContext(), accessoryDatabase.class, "Accessory-db").allowMainThreadQueries().build();
@@ -54,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
         spinnerAdapter.notifyDataSetChanged();
         spinner.setOnItemSelectedListener(onItemSelectedListener());
 
+
+
     }
     AdapterView.OnItemSelectedListener onItemSelectedListener(){
         return new AdapterView.OnItemSelectedListener() {
@@ -64,17 +70,33 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (accessoryList.get(position).price.equals("low")) {
-                    Intent intent2 = new Intent(MainActivity.this, MainActivity2.class);
-                    startActivity(intent2);
+                    Intent intent1 = new Intent(MainActivity.this, MainActivity2.class);
+                    Bundle a = new Bundle();
+                    a.putString("price", "low");
+                    intent1.putExtras(a);
+                    startActivity(intent1);
+
+
+
                 }
                 if (accessoryList.get(position).price.equals("medium")) {
-                    Intent intent1 = new Intent(MainActivity.this, MainActivity3.class);
-                    startActivity(intent1);
+                    Intent intent2 = new Intent(MainActivity.this, MainActivity2.class);
+                    Bundle b = new Bundle();
+                    b.putString("price", "medium");
+                    intent2.putExtras(b);
+                    startActivity(intent2);
+                    finish();
+
                 }
 
                 if (accessoryList.get(position).price.equals("high")){
-                    Intent intent3 = new Intent(MainActivity.this, MainActivity4.class);
+                    Intent intent3 = new Intent(MainActivity.this, MainActivity2.class);
                     startActivity(intent3);
+                    Bundle c = new Bundle();
+                    c.putString("price", "high");
+                    intent3.putExtras(c);
+                    startActivity(intent3);
+                    finish();
                 }
 
 
