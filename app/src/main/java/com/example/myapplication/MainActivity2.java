@@ -31,7 +31,7 @@ public class MainActivity2 extends AppCompatActivity {
         price = getIntent().getStringExtra("price");
 
         accessoryDatabase db = Room.databaseBuilder(getApplicationContext(), accessoryDatabase.class, "Accessory-db").allowMainThreadQueries().build();
-        accessoryList = db.accessoryDao().getAccessoryByTypeAndPrice(price,"price" );
+        accessoryList = db.accessoryDao().getAccessoryByTypeAndPrice("processor", price );
         ArrayAdapter<String> listAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, new ArrayList<>());
         ArrayList<String> displayAccessories = new ArrayList<>();
         for (Accessory item : accessoryList) {

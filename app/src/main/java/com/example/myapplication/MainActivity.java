@@ -35,12 +35,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         accessoryDatabase db = Room.databaseBuilder(getApplicationContext(), accessoryDatabase.class, "Accessory-db").allowMainThreadQueries().build();
-        Accessory Null = new Accessory("q" , "null" , "Процессор");
         Accessory ryzen_3_1200 = new Accessory("low", "processor","Ryzen 3 1200");
         Accessory ryzen_5_5600 = new Accessory("medium" , "processor", "Ryzen 5 5600");
         Accessory ryzen_9_5900X = new Accessory("high" , "processor", "Ryzen 9 5900X");
 
-        db.accessoryDao().insertAll(Null,ryzen_3_1200,ryzen_5_5600,ryzen_9_5900X);
+        db.accessoryDao().insertAll(ryzen_3_1200,ryzen_5_5600,ryzen_9_5900X);
         accessoryList = db.accessoryDao().getAllAccessory();
         ArrayList<String> displayAccessories = new ArrayList<>();
         for (Accessory item : accessoryList) {
@@ -54,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, new ArrayList<>());
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(spinnerAdapter);
+        spinner.setPrompt("Процессор");
         spinnerAdapter.addAll(displayAccessories);
         spinnerAdapter.notifyDataSetChanged();
         spinner.setOnItemSelectedListener(onItemSelectedListener());
