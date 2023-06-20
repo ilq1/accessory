@@ -14,6 +14,11 @@ public interface AccessoryDao {
     List<Accessory>getAllAccessory();
     @Query("SELECT * FROM Accessory WHERE type=:type AND price=:price")
     List<Accessory> getAccessoryByTypeAndPrice(String type, String price);
+    @Query("SELECT * FROM Accessory WHERE type=:type")
+    List<Accessory> getAccessoryByType(String type);
+    @Query("SELECT COUNT(*) FROM Accessory")
+    int getAccessoryCount();
+
 
 
 }

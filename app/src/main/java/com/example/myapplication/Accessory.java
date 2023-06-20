@@ -1,5 +1,7 @@
 package com.example.myapplication;
 
+import android.widget.EditText;
+
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -21,6 +23,7 @@ public class Accessory {
       this.type = type;
       this.title = title;
   }
+
 
 
 }
