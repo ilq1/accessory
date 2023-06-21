@@ -91,6 +91,9 @@ public class MainActivity extends AppCompatActivity {
     protected  void  onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
         
         accessoryDatabase db = Room.databaseBuilder(getApplicationContext(), accessoryDatabase.class, "Accessory-db").allowMainThreadQueries().build();
 
@@ -102,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
         for (Accessory item : accessoryList) {
             displayAccessories.add(item.title);
         }
-        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        Spinner spinner = findViewById(R.id.spinner);
 
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, new ArrayList<>());
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -110,28 +113,6 @@ public class MainActivity extends AppCompatActivity {
         spinnerAdapter.addAll(displayAccessories);
         spinnerAdapter.notifyDataSetChanged();
         spinner.setOnItemSelectedListener(onItemSelectedListener());
-        EditText edit1 = findViewById(R.id.edit1);
-        EditText edit2 = findViewById(R.id.edit2);
-        EditText edit3 = findViewById(R.id.edit3);
-        Button button = (Button) findViewById(R.id.button);
-
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String text1 = edit1.getText().toString();
-                String text2 = edit2.getText().toString();
-                String text3 = edit3.getText().toString();
-                Accessory edit = new Accessory(text1,text2,text3);
-                db.accessoryDao().insertAll(edit);
-                db.close();
-                updateSpinnerData();
-
-
-            }
-
-
-        });
-
 
 
     }
@@ -143,7 +124,10 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+
                 if (position == 0) return;
+                
                 if (accessoryList.get(position - 1).price.equals("low")) {
                     Intent intent1 = new Intent(MainActivity.this, MainActivity2.class);
                     Bundle a = new Bundle();
@@ -161,6 +145,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent2);
 
 
+
                 }
 
                 if (accessoryList.get(position-1 ).price.equals("high")){
@@ -171,6 +156,9 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent3);
                     
                 }
+                Spinner.setSelection(0);
+
+
 
 
             }
@@ -192,4 +180,5 @@ public class MainActivity extends AppCompatActivity {
 
 
 }
+
 
