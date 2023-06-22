@@ -33,20 +33,6 @@
          />
 
     <EditText
-        android:id="@+id/edit2"
-        android:layout_width="151dp"
-        android:layout_height="55dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Type"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="TouchTargetSizeCheck" />
-
-    <EditText
         android:id="@+id/edit3"
         android:layout_width="151dp"
         android:layout_height="55dp"
@@ -67,13 +53,24 @@
         android:layout_height="55dp"
         android:layout_marginEnd="52dp"
         android:text="Add"
-        app:layout_constraintBottom_toBottomOf="@+id/edit2"
+        app:layout_constraintBottom_toBottomOf="@+id/spinner2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.947"
-        app:layout_constraintStart_toEndOf="@+id/edit2"
-        app:layout_constraintTop_toTopOf="@+id/edit2"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.578"
+        app:layout_constraintStart_toEndOf="@+id/spinner2"
+        app:layout_constraintTop_toTopOf="@+id/spinner2"
         tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck" />
+
+    <Spinner
+        android:id="@+id/spinner2"
+        android:layout_width="151dp"
+        android:layout_height="55dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.007"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        app:layout_constraintVertical_bias="0.499" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
